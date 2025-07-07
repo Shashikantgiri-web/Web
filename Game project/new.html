@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .game-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .number-input {
+            width: 200px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .number-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: white;
+        }
+
+        .guess-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 15px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .guess-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .guess-button:active {
+            transform: translateY(0);
+        }
+
+        .result-section {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            animation: successPulse 0.6s ease-in-out;
+        }
+
+        .result-error {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            animation: errorShake 0.6s ease-in-out;
+        }
+
+        .result-hint {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            animation: hintFade 0.5s ease-in-out;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(0.9); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes errorShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes hintFade {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .new-game-button {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #333;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(252, 182, 159, 0.3);
+        }
+
+        .new-game-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(252, 182, 159, 0.4);
+        }
+
+        .range-display {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .game-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .game-title {
+                font-size: 2rem;
+            }
+            
+            .number-input {
+                width: 150px;
+                margin-bottom: 15px;
+            }
+            
+            .guess-button {
+                margin-left: 0;
+                width: 150px;
+            }
+            
+            .stats-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="game-title">🎯 Number Guessing Game</h1>
+        <p class="game-subtitle">Can you guess the mystery number between 1 and 100?</p>
+        
+        <div class="input-section">
+            <input type="number" id="userGuess" class="number-input" placeholder="Enter your guess" min="1" max="100">
+            <button onclick="makeGuess()" class="guess-button">Guess!</button>
+        </div>
+        
+        <div id="resultSection" class="result-section hidden">
+            <p id="resultMessage"></p>
+        </div>
+        
+        <div class="stats-section">
+            <div class="stat-item">
+                <span id="attemptsCount" class="stat-number">0</span>
+                <span class="stat-label">Attempts</span>
+            </div>
+            <div class="stat-item">
+                <span id="gamesPlayed" class="stat-number">0</span>
+                <span class="stat-label">Games Played</span>
+            </div>
+            <div class="stat-item">
+                <span id="gamesWon" class="stat-number">0</span>
+                <span class="stat-label">Games Won</span>
+            </div>
+        </div>
+        
+        <button onclick="newGame()" class="new-game-button">New Game</button>
+        
+        <div class="range-display">
+            <p>💡 Tip: The number is between 1 and 100</p>
+        </div>
+    </div>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+        let gamesPlayed = parseInt(localStorage.getItem('gamesPlayed')) || 0;
+        let gamesWon = parseInt(localStorage.getItem('gamesWon')) || 0;
+        
+        // Update stats display
+        updateStatsDisplay();
+        
+        function makeGuess() {
+            const userInput = document.getElementById('userGuess');
+            const userGuess = parseInt(userInput.value);
+            const resultSection = document.getElementById('resultSection');
+            const resultMessage = document.getElementById('resultMessage');
+            
+            if (!userGuess || userGuess < 1 || userGuess > 100) {
+                showResult('Please enter a valid number between 1 and 100!', 'error');
+                return;
+            }
+            
+            attempts++;
+            updateAttemptsDisplay();
+            
+            if (userGuess === randomNumber) {
+                const range = getNumberRange(randomNumber);
+                showResult(`🎉 Congratulations! You guessed it right in ${attempts} attempts!<br>The number ${randomNumber} was in the range of ${range}.`, 'success');
+                gamesWon++;
+                gamesPlayed++;
+                updateStats();
+            } else {
+                const range = getNumberRange(randomNumber);
+                const hint = userGuess < randomNumber ? 'Try a higher number!' : 'Try a lower number!';
+                showResult(`❌ Wrong guess! ${hint}<br>💡 Hint: The mystery number is in the range of ${range}.`, 'hint');
+            }
+            
+            userInput.value = '';
+            userInput.focus();
+        }
+        
+        function getNumberRange(number) {
+            if (number <= 10) return '1 to 10';
+            if (number <= 20) return '11 to 20';
+            if (number <= 30) return '21 to 30';
+            if (number <= 40) return '31 to 40';
+            if (number <= 50) return '41 to 50';
+            if (number <= 60) return '51 to 60';
+            if (number <= 70) return '61 to 70';
+            if (number <= 80) return '71 to 80';
+            if (number <= 90) return '81 to 90';
+            return '91 to 100';
+        }
+        
+        function showResult(message, type) {
+            const resultSection = document.getElementById('resultSection');
+            const resultMessage = document.getElementById('resultMessage');
+            
+            resultSection.className = `result-section result-${type} fade-in`;
+            resultMessage.innerHTML = message;
+            resultSection.classList.remove('hidden');
+        }
+        
+        function newGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+            updateAttemptsDisplay();
+            
+            const resultSection = document.getElementById('resultSection');
+            resultSection.classList.add('hidden');
+            
+            document.getElementById('userGuess').value = '';
+            document.getElementById('userGuess').focus();
+            
+            if (gamesPlayed > 0) {
+                gamesPlayed++;
+                updateStats();
+            }
+        }
+        
+        function updateAttemptsDisplay() {
+            document.getElementById('attemptsCount').textContent = attempts;
+        }
+        
+        function updateStatsDisplay() {
+            document.getElementById('gamesPlayed').textContent = gamesPlayed;
+            document.getElementById('gamesWon').textContent = gamesWon;
+        }
+        
+        function updateStats() {
+            localStorage.setItem('gamesPlayed', gamesPlayed);
+            localStorage.setItem('gamesWon', gamesWon);
+            updateStatsDisplay();
+        }
+        
+        // Allow Enter key to submit guess
+        document.getElementById('userGuess').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                makeGuess();
+            }
+        });
+        
+        // Focus on input when page loads
+        document.getElementById('userGuess').focus();
+    </script>
+</body>
+</html>
