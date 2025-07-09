@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,20 +123,47 @@
         }
 
         @keyframes successPulse {
-            0% { transform: scale(0.9); opacity: 0; }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         @keyframes errorShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
         }
 
         @keyframes hintFade {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .stats-section {
@@ -195,21 +223,26 @@
                 padding: 30px 20px;
                 margin: 10px;
             }
-            
+
             .game-title {
                 font-size: 2rem;
             }
-            
+
+            .input-section {
+                display: flex;
+                flex-direction: column;
+            }
+
             .number-input {
-                width: 150px;
+                width: 100%;
                 margin-bottom: 15px;
             }
-            
+
             .guess-button {
                 margin-left: 0;
-                width: 150px;
+                width: 100%;
             }
-            
+
             .stats-section {
                 flex-direction: column;
                 gap: 15px;
@@ -225,25 +258,33 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="game-container">
         <h1 class="game-title">🎯 Number Guessing Game</h1>
         <p class="game-subtitle">Can you guess the mystery number between 1 and 100?</p>
-        
+
         <div class="input-section">
             <input type="number" id="userGuess" class="number-input" placeholder="Enter your guess" min="1" max="100">
             <button onclick="makeGuess()" class="guess-button">Guess!</button>
         </div>
-        
+
         <div id="resultSection" class="result-section hidden">
             <p id="resultMessage"></p>
         </div>
-        
+
         <div class="stats-section">
             <div class="stat-item">
                 <span id="attemptsCount" class="stat-number">0</span>
@@ -258,9 +299,9 @@
                 <span class="stat-label">Games Won</span>
             </div>
         </div>
-        
+
         <button onclick="newGame()" class="new-game-button">New Game</button>
-        
+
         <div class="range-display">
             <p>💡 Tip: The number is between 1 and 100</p>
         </div>
@@ -271,24 +312,24 @@
         let attempts = 0;
         let gamesPlayed = parseInt(localStorage.getItem('gamesPlayed')) || 0;
         let gamesWon = parseInt(localStorage.getItem('gamesWon')) || 0;
-        
+
         // Update stats display
         updateStatsDisplay();
-        
+
         function makeGuess() {
             const userInput = document.getElementById('userGuess');
             const userGuess = parseInt(userInput.value);
             const resultSection = document.getElementById('resultSection');
             const resultMessage = document.getElementById('resultMessage');
-            
+
             if (!userGuess || userGuess < 1 || userGuess > 100) {
                 showResult('Please enter a valid number between 1 and 100!', 'error');
                 return;
             }
-            
+
             attempts++;
             updateAttemptsDisplay();
-            
+
             if (userGuess === randomNumber) {
                 const range = getNumberRange(randomNumber);
                 showResult(`🎉 Congratulations! You guessed it right in ${attempts} attempts!<br>The number ${randomNumber} was in the range of ${range}.`, 'success');
@@ -300,11 +341,11 @@
                 const hint = userGuess < randomNumber ? 'Try a higher number!' : 'Try a lower number!';
                 showResult(`❌ Wrong guess! ${hint}<br>💡 Hint: The mystery number is in the range of ${range}.`, 'hint');
             }
-            
+
             userInput.value = '';
             userInput.focus();
         }
-        
+
         function getNumberRange(number) {
             if (number <= 10) return '1 to 10';
             if (number <= 20) return '11 to 20';
@@ -317,57 +358,58 @@
             if (number <= 90) return '81 to 90';
             return '91 to 100';
         }
-        
+
         function showResult(message, type) {
             const resultSection = document.getElementById('resultSection');
             const resultMessage = document.getElementById('resultMessage');
-            
+
             resultSection.className = `result-section result-${type} fade-in`;
             resultMessage.innerHTML = message;
             resultSection.classList.remove('hidden');
         }
-        
+
         function newGame() {
             randomNumber = Math.floor(Math.random() * 100) + 1;
             attempts = 0;
             updateAttemptsDisplay();
-            
+
             const resultSection = document.getElementById('resultSection');
             resultSection.classList.add('hidden');
-            
+
             document.getElementById('userGuess').value = '';
             document.getElementById('userGuess').focus();
-            
+
             if (gamesPlayed > 0) {
                 gamesPlayed++;
                 updateStats();
             }
         }
-        
+
         function updateAttemptsDisplay() {
             document.getElementById('attemptsCount').textContent = attempts;
         }
-        
+
         function updateStatsDisplay() {
             document.getElementById('gamesPlayed').textContent = gamesPlayed;
             document.getElementById('gamesWon').textContent = gamesWon;
         }
-        
+
         function updateStats() {
             localStorage.setItem('gamesPlayed', gamesPlayed);
             localStorage.setItem('gamesWon', gamesWon);
             updateStatsDisplay();
         }
-        
+
         // Allow Enter key to submit guess
-        document.getElementById('userGuess').addEventListener('keypress', function(e) {
+        document.getElementById('userGuess').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 makeGuess();
             }
         });
-        
+
         // Focus on input when page loads
         document.getElementById('userGuess').focus();
     </script>
 </body>
+
 </html>
