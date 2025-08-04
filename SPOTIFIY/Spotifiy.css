@@ -1,0 +1,1297 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Universal button styles for cursor and scaling effects */
+button {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0%;
+    padding: 0px;
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+header {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    width: 98vw;
+    height: 7vh;
+    gap: 5px;
+    margin-bottom: 5px; 
+    
+}
+
+.first_half {
+    width: 48%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid rgb(210, 146, 50); */
+}
+
+.spo-logo {
+    width: 13%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spo-logo>svg {
+    fill: white;
+}
+
+.logo_2 {
+    display: none;
+}
+
+.home-logo {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-logo>.button {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(59 55 55 / 65%);
+}
+
+.button>svg {
+    fill: white;
+    width: 56%;
+}
+
+.search-div {
+    width: 69%;
+    display: flex;
+    /* border: 1px solid darkred; */
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(59 55 55 / 65%);
+    border-radius: 30px;
+}
+
+.sea_logo {
+    width: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sea_logo>img {
+    width: 62%;
+}
+
+.sea_input {
+    width: 70%;
+}
+
+.sea_input>input {
+    width: 96%;
+    height: 30px;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.sea_browse {
+    width: 16%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sea_browse>button {
+    width: 66%;
+    background-color: transparent;
+    fill: gray;
+    border: none;
+    border-left: 1px solid white;
+}
+
+.second_half {
+    width: 48%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    /* border: 1px solid rgba(7, 151, 184, 0.741); */
+}
+
+/* Styles for ul and h4 elements inside second_half */
+.second_half ul {
+    transition: transform 0.2s ease-in-out;
+}
+
+.second_half ul:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.second_half ul:active {
+    transform: scale(0.95);
+}
+
+.second_half h4 {
+    transition: transform 0.2s ease-in-out;
+}
+
+.second_half h4:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.second_half h4:active {
+    transform: scale(0.95);
+}
+
+/* Styles for li elements inside ul tags within .second_half */
+.second_half ul li {
+    transition: transform 0.2s ease-in-out;
+}
+
+.second_half ul li:hover {
+    cursor: pointer;
+    color: white;
+    transform: scale(1.05);
+}
+
+.second_half ul li:active {
+    transform: scale(0.95);
+}
+
+/* Styles for h4 inside .second_half, but NOT inside .login_button */
+.second_half h4:not(.login_button h4) {
+    transition: transform 0.2s ease-in-out;
+}
+
+.second_half h4:not(.login_button h4):hover {
+    cursor: pointer;
+    color: white;
+    transform: scale(1.05);
+}
+
+.second_half h4:not(.login_button h4):active {
+    transform: scale(0.95);
+}
+
+.Ul_bar {
+    width: 50%;
+}
+
+.Ul_bar>ul {
+    margin: 5% 0%;
+    padding: 0%;
+    color: gray;
+    font-size: larger;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+    border-right: 1px solid white;
+}
+
+.head_button {
+    width: 50%;
+    color: gray;
+    display: flex;
+    flex-direction: row;
+}
+
+.button_install {
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.button_install>svg {
+    fill: gray;
+    width: 16%;
+}
+
+.h4 {
+    margin: 0%;
+}
+
+.button_signup {
+    width: 30%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_button {
+    min-width: 30%;
+    max-width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login_button {
+    width: 96%;
+    height: 85%;
+    font-size: larger;
+    border: none;
+    border-radius: 40px;
+}
+
+.nav_barlog {
+    width: 4%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_barlog>span {
+    fill: whitesmoke;
+    width: 23px;
+    cursor: pointer;
+}
+
+nav {
+    width: 98vw;
+    height: 98vh;
+    padding: 1%;
+    background-color: #090000;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    display: flex;
+    z-index: 11;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.back_buttom {
+    width: 99%;
+    height: 40px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.back_buttom>img {
+    width: 24px;
+    padding: 10px 13px;
+    cursor: pointer;
+}
+
+.main_nav {
+    width: 99%;
+    height: 130px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.main_nav>h3 {
+    color: white;
+    margin: 0px;
+    font-size: larger;
+    padding: 10px 15px;
+}
+
+#divider {
+    width: 99%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#divider>hr {
+    width: 37px;
+    height: 0px;
+    margin: 14px 22px;
+}
+
+.other_nav {
+    width: 99%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.other_nav>ul {
+    list-style: none;
+    color: white;
+    display: flex;
+    padding: 20px;
+    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.other_nav>ul>li {
+    margin: 10px 0px;
+}
+
+main {
+    /* border: 1px solid rgba(128, 59, 232, 0.688); */
+    width: 98vw;
+    height: 80vh;
+    padding: 0%;
+    display: flex;
+    margin-left: 13px;
+    flex-direction: row;
+    margin-top: 5px;
+    gap: 10px;
+    position: relative;
+    overflow: auto;
+}
+
+.body_nav {
+    /* border: 1px solid rgb(15, 152, 76); */
+    width: 34%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: rgb(39 37 37 / 71%);
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+}
+
+.lib_1 {
+    width: 92%;
+    height: 8%;
+    padding: 3%;
+    display: flex;
+    gap: 2%;
+    flex-direction: row;
+    align-items: center;
+    /* border: 1px solid yellow; */
+}
+
+.lib_fh {
+    width: 49%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.lib_fh>h3 {
+    margin: 0%;
+    padding: 5px;
+}
+
+.lib_sh {
+    width: 49%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.lib_button {
+    border: none;
+    border-radius: 50%;
+    padding: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: transparent;
+}
+
+.lib_button>svg {
+    width: 20px;
+    fill: white;
+    background-color: transparent;
+}
+
+.lib_2 {
+    width: 99%;
+    height: 50%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.lib_boxs {
+    width: 99%;
+    height: 400px;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.over_1 {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.over_2 {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.playlist {
+    width: 91%;
+    height: 70%;
+    margin: 6px;
+    padding: 8px;
+    color: white;
+    background-color: #363434bd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.pl_button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pl_h {
+    margin: 0%;
+}
+
+.pl_button>button {
+    border: none;
+    border-radius: 36px;
+    padding: 11px;
+    font-size: medium;
+    width: 130px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p2_button>button {
+    border: none;
+    border-radius: 36px;
+    padding: 11px;
+    font-size: medium;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lib_3 {
+    width: 99%;
+    height: 36%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.ul_1 {
+    width: 99%;
+    display: flex;
+    flex-direction: row;
+}
+
+.ul_l>ul {
+    list-style: none;
+    margin: 0%;
+    padding: 11px;
+    font-size: small;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ul_list {
+    color: grey;
+    text-decoration: none;
+}
+
+.a_link {
+    width: 98%;
+    height: 14%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.a_link>a {
+    padding: 8px;
+    text-decoration: none;
+    color: white;
+}
+
+.lang_button {
+    width: 95%;
+    height: 30%;
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.lang_button>button {
+    border: 2px solid white;
+    border-radius: 20px;
+    background-color: transparent;
+    color: white;
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.lang_button>button>svg {
+    fill: white;
+    width: 20px;
+}
+
+.main_body {
+    /* border: 1px solid rgb(174, 104, 20); */
+    width: 64%;
+    height: 100%;
+    border-radius: 15px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    position: relative;
+    background-color: rgb(39 37 37 / 71%);
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main {
+    width: 98%;
+    height: 45vh;
+    margin: 2% 0%;
+    padding: 0%;
+    /* border: 1px solid blue; */
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    width: 99%;
+    height: 10vh;
+    padding: 1px;
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_1 {
+    width: 49%;
+    height: 99%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.title_1>h2 {
+    margin: 0%;
+}
+
+.title_1>h2>a {
+    text-decoration: none;
+    color: white;
+}
+
+.title_2 {
+    width: 49%;
+    height: 99%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.title_2>h4 {
+    margin: 0%;
+}
+
+.title_2>h4>a {
+    text-decoration: none;
+    color: gray;
+}
+
+.cards {
+    width: 99%;
+    height: 50vh;
+    border: 1px solid deeppink;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.card_box {
+    width: 150px;
+    height: 94%;
+    margin: 0% 0% 0% 10px;
+    padding: 5px 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid darkgreen;
+}
+
+.box_img,
+.box_img_2 {
+    width: 150px;
+    height: 60%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.box_img>img {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid white; */
+    border-radius: 6px;
+}
+
+.box_img_2>img {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+}
+
+.img_button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    right: 8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #9df349fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.img_button>img {
+    width: 20px;
+}
+
+.box_title_TS {
+    width: 99%;
+    height: 40%;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.box_title_PA {
+    width: 99%;
+    height: 40%;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.box_title_PAS {
+    width: 99%;
+    height: 40%;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.box_title_PR {
+    width: 99%;
+    height: 40%;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.box_title_FC {
+    width: 99%;
+    height: 40%;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.box_title_IR {
+    width: 99%;
+    height: 40%;
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 4px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.box_title_TS>h5,
+.box_title_PA>h5,
+.box_title_PAS>h3,
+.box_title_PR>h5,
+.box_title_FC>h5,
+.box_title_IR>h5 {
+    margin: 0%;
+    padding: 0% 0% 0% 8px;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.box_title_TS>p,
+.box_title_PA>p,
+.box_title_PAS>p,
+.box_title_PR>p,
+.box_title_FC>p,
+.box_title_IR>p {
+    margin: 0%;
+    padding: 0% 0% 0% 8px;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.box_title_TS>h5>a,
+.box_title_PA>h5>a,
+.box_title_PAS>h5>a,
+.box_title_PR>h5>a,
+.box_title_FC>h5>a,
+.box_title_IR>h5>a {
+    text-decoration: none;
+    color: white;
+}
+
+.box_title_TS>p>a,
+.box_title_PA>p>a,
+.box_title_PAS>p>a,
+.box_title_PR>p>a,
+.box_title_FC>p>a,
+.box_title_IR>p>a {
+    text-decoration: none;
+    color: gray;
+}
+
+.box_fc,
+.box_pr {
+    height: 70%;
+}
+
+.title_fc,
+.title_pr {
+    height: 25%;
+}
+
+.title_fc>h5,
+.title_pr>h5 {
+    height: 100%;
+    width: 94%;
+}
+
+footer {
+    width: 98%;
+    margin: 2% 0%;
+    padding: 40px 0px 0px 0px;
+    /* border: 1px solid blue; */
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hr_1 {
+    width: 89%;
+    border-color: gray;
+    margin: 24px 10px;
+}
+
+.foot_box {
+    padding: 5px 30px 15px 30px;
+    width: 93%;
+    height: 320px;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.f_text {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.text_f {
+    width: 25%;
+    height: 90%;
+    margin: 6% 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.text_f>p {
+    margin: 0%;
+    padding: 6% 7%;
+    color: white;
+}
+
+.text_f>p>a {
+    text-decoration: none;
+    color: gray;
+}
+
+.f_icons {
+    width: 30%;
+    height: 90%;
+    padding: 3% 0% 0% 0%;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.icons_box {
+    width: 30%;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons_box>button {
+    width: 80%;
+    height: 90%;
+    background-color: rgb(59 55 55 / 65%);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons_box>button>svg {
+    fill: white;
+    width: 20px;
+}
+
+.hr_2 {
+    width: 89%;
+    border-color: gray;
+    margin: 6px 10px 24px 10px;
+}
+
+.cr {
+    width: 98%;
+    height: 50px;
+    margin: 0% 0% 5% 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.cr>p {
+    margin: 0%;
+    color: gray;
+    padding: 0px 0px 0px 50px;
+}
+
+/* --- Song Play Bar Styles --- */
+.song-play-bar {
+    position: sticky;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    width: 94%;
+    min-height: 84px;
+    background: linear-gradient(45deg, #2d2a2acf 50%, #403232cf 64%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5px;
+    z-index: 10;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.7);
+    gap: 0;
+    border-radius: 20px;
+    margin: 0;
+    transition: background 0.3s;
+}
+
+.spb-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.spb-album-art {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.spb-song-info {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: 16px;
+    min-width: 160px;
+    max-width: 200px;
+    overflow: hidden;
+}
+
+.spb-title {
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spb-artists {
+    font-size: 13px;
+    color: #b3b3b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spb-add-btn {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    font-size: 22px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.spb-add-btn:hover {
+    color: #1db954;
+    background: rgba(30, 215, 96, 0.1);
+}
+
+.spb-center {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.spb-controls {
+    width: 99%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 6px;
+}
+
+.spb-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    transition: background 0.2s;
+}
+
+.spb-btn svg {
+    fill: #fff;
+    opacity: 0.85;
+    transition: opacity 0.2s, filter 0.2s;
+}
+
+.spb-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.spb-btn:hover svg {
+    opacity: 1;
+    filter: brightness(1.5);
+}
+
+.spb-play {
+    width: 48px;
+    height: 48px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 8px;
+    transition: background 0.2s;
+}
+
+.spb-play svg {
+    width: 32px;
+    height: 32px;
+    fill: #181818;
+    background: none;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.spb-play:hover {
+    background: #1db954;
+}
+
+.spb-play:hover svg {
+    fill: #fff;
+}
+
+.spb-progress {
+    width: 99%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 90vw;
+}
+
+.spb-time {
+    color: #b3b3b3;
+    font-size: 13px;
+    min-width: 36px;
+    text-align: center;
+}
+
+.spb-slider {
+    flex: 1;
+    accent-color: #1db954;
+    height: 4px;
+    border-radius: 2px;
+    background: #535353;
+    outline: none;
+    margin: 0 6px;
+    transition: accent-color 0.2s;
+}
+
+.spb-slider::-webkit-slider-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1db954;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.spb-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1db954;
+    cursor: pointer;
+    border: none;
+}
+
+.spb-slider::-ms-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1db954;
+    cursor: pointer;
+    border: none;
+}
+
+.spb-slider:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #1db95444;
+}
+
+/* --- Spotify Preview Banner --- */
+.spotify-preview-banner {
+    width: 99%;
+    height: 38px;
+    background: linear-gradient(90deg, #c22ed3 0%, #5a8dee 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 11px 0px;
+    margin-top: 11px;
+    flex-direction: row;
+}
+
+.spb-text {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.spb-text>p {
+    padding: 0% 0% 0% 4%;
+    margin: 0%;
+}
+
+.spb-button {
+    width: 28%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.spb-signup-btn {
+    background: #fff;
+    color: #181818;
+    border: none;
+    border-radius: 32px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.spb-signup-btn:hover {
+    background: #fff;
+    color: #181818;
+    border: none;
+    border-radius: 32px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.spb-signup-btn:hover {
+    background: #181818;
+    color: #fff;
+}
+
+.bottom_bar {
+    /* border: 1px solid royalblue; */
+    display: flex;
+    width: 99%;
+    height: 9vh;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.bottom {
+    width: 20%;
+    height: 99%;
+    display: flex;
+    flex-direction: column;
+    padding: 0%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.bottom>svg {
+    fill: white;
+    width: 25px;
+}
+
+.bottom>p {
+    color: white;
+    font-size: 13px;
+    margin: 0%;
+}
