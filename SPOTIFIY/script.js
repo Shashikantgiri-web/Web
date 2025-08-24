@@ -24,7 +24,7 @@ function findCurrentIndices() {
     for (let albumIndex = 0; albumIndex < allAlbums.albums.length; albumIndex++) {
         const album = allAlbums.albums[albumIndex];
         for (let songIndex = 0; songIndex < album.titles.length; songIndex++) {
-            if (album.titles[songIndex].replaceAll("%20", " ") === c_t) {
+            if (album.titles[songIndex].replaceAll("_", " ") === c_t) {
                 allAlbums.currentAlbumIndex = albumIndex;
                 allAlbums.currentSongIndex = songIndex;
                 return { albumIndex, songIndex };
@@ -62,7 +62,7 @@ function playPreviousSong() {
     const targetAlbum = allAlbums.albums[albumIndex];
     const songUrl = targetAlbum.songs[songIndex];
     const imageUrl = targetAlbum.images[songIndex];
-    const songTitle = targetAlbum.titles[songIndex].replaceAll("%20", " ");
+    const songTitle = targetAlbum.titles[songIndex].replaceAll("_", " ");
 
     console.log(`Previous: ${songTitle} from ${targetAlbum.name}`);
     playMusic(songUrl, imageUrl, songTitle);
@@ -96,7 +96,7 @@ function playNextSong() {
     const targetAlbum = allAlbums.albums[albumIndex];
     const songUrl = targetAlbum.songs[songIndex];
     const imageUrl = targetAlbum.images[songIndex];
-    const songTitle = targetAlbum.titles[songIndex].replaceAll("%20", " ");
+    const songTitle = targetAlbum.titles[songIndex].replaceAll("_", " ");
 
     console.log(`Next: ${songTitle} from ${targetAlbum.name}`);
     playMusic(songUrl, imageUrl, songTitle);
@@ -299,11 +299,11 @@ async function getT_S() {
                 </button>
             </div>
             <div class="box_title_IR">
-                <h5 class="s_display" data-songs="${s_no}"><a href="#" class="t_display">${c_no.replaceAll("%20", " ")}</a></h5>
+                <h5 class="s_display" data-songs="${s_no}"><a href="#" class="t_display">${c_no.replaceAll("_", " ")}</a></h5>
             </div>`;
         tsContainer.innerHTML = tsContainer.innerHTML + html;
         // console.log(s_no);
-        // console.log(`${c_no.replaceAll("%20"," ")}`);
+        // console.log(`${c_no.replaceAll("_"," ")}`);
     }
 
     const tsSeeButton = document.querySelector(".TS_see");
@@ -334,7 +334,7 @@ async function getT_S() {
                 </button>
             </div>
             <div class="box_title_IR">
-                <h5 class="s_display" data-songs="${s_no}"><a href="#" class="t_display">${c_no.replaceAll("%20", " ")}</a></h5>
+                <h5 class="s_display" data-songs="${s_no}"><a href="#" class="t_display">${c_no.replaceAll("_", " ")}</a></h5>
             </div>`;
             document.querySelector(".ab_box").innerHTML = document.querySelector(".ab_box").innerHTML + all_box;
             // console.log("click See all button");
@@ -478,7 +478,7 @@ async function getPA() {
                 </button>
             </div>
             <div class="box_title_PA">
-                <h5><a href="#" data-fetch="${u_no_3}" id="f_song">${t_no.replaceAll("%20", " ")}</a></h5>
+                <h5><a href="#" data-fetch="${u_no_3}" id="f_song">${t_no.replaceAll("_", " ")}</a></h5>
                 <p><a href="#">Artist</a></p>
             </div>
         </div>`;
@@ -523,7 +523,7 @@ async function getPA() {
                 let copy_1 = [];
                 for (let index = 0; index < url.length; index++) {
                     let e = url[index];
-                    copy_1.push(e.split("/P_A/")[1].replaceAll("%20", " "));
+                    copy_1.push(e.split("/P_A/")[1].replaceAll("_", " "));
                 }
                 return copy_1;
             }
@@ -632,7 +632,7 @@ async function getPA() {
                             </div>
                             <div class="box_title_IR">
                                 <h5 class="s_display" data-songs="#">
-                                    <a href="#" class="t_display">${st_no.replaceAll("%20", " ")}</a>
+                                    <a href="#" class="t_display">${st_no.replaceAll("_", " ")}</a>
                                 </h5>
                             </div>
                         </div>`;
@@ -720,7 +720,7 @@ async function getPAS() {
                             </div>
                             <div class="box_title_IR">
                                 <h5 class="s_display" data-songs="#">
-                                    <a href="#" class="t_display" data-fetch="${u_no_3}" id="f_song">${t_no.replaceAll("%20", " ")}</a>
+                                    <a href="#" class="t_display" data-fetch="${u_no_3}" id="f_song">${t_no.replaceAll("_", " ")}</a>
                                 </h5>
                             </div>
                         </div>`;
@@ -761,7 +761,7 @@ async function getPAS() {
                 let copy_1 = [];
                 for (let index = 0; index < url.length; index++) {
                     let e = url[index];
-                    copy_1.push(e.split("/P_A_S/")[1].replaceAll("%20", " "));
+                    copy_1.push(e.split("/P_A_S/")[1].replaceAll("_", " "));
                 }
                 return copy_1;
             }
@@ -847,7 +847,7 @@ async function getPAS() {
                             </div>
                             <div class="box_title_IR">
                                 <h5 class="s_display" data-songs="#">
-                                    <a href="#" class="t_display" data-fetch="${u_no_3}" id="f_song">${st_no.replaceAll("%20", " ")}</a>
+                                    <a href="#" class="t_display" data-fetch="${u_no_3}" id="f_song">${st_no.replaceAll("_", " ")}</a>
                                 </h5>
                             </div>
                         </div>`;
@@ -999,7 +999,7 @@ async function getPR() {
                 let copy_1 = [];
                 for (let index = 0; index < url.length; index++) {
                     let e = url[index];
-                    copy_1.push(e.split("/P_R/")[1].replaceAll("%20", " "));
+                    copy_1.push(e.split("/P_R/")[1].replaceAll("_", " "));
                 }
                 return copy_1;
             }
@@ -1226,7 +1226,7 @@ async function getFC() {
                 let copy_1 = [];
                 for (let index = 0; index < url.length; index++) {
                     let e = url[index];
-                    copy_1.push(e.split("/F_C/")[1].replaceAll("%20", " "));
+                    copy_1.push(e.split("/F_C/")[1].replaceAll("_", " "));
                 }
                 return copy_1;
             }
@@ -1404,7 +1404,7 @@ async function getI_R() {
                 </button>
             </div>
             <div class="box_title_IR">
-                <h5 class="s_display" data-songs="${s_no}"><a href="#" class="t_display">${c_no.replaceAll("%20", " ")}</a></h5>
+                <h5 class="s_display" data-songs="${s_no}"><a href="#" class="t_display">${c_no.replaceAll("_", " ")}</a></h5>
             </div>`;
         document.querySelector(".IR").innerHTML = document.querySelector(".IR").innerHTML + html;
         // console.log(s_no);
@@ -1437,7 +1437,7 @@ async function getI_R() {
                 </button>
             </div>
             <div class="box_title_IR">
-                <h5 class="s_display" data-songs="${s_no}"><a href="#" class="t_display">${c_no.replaceAll("%20", " ")}</a></h5>
+                <h5 class="s_display" data-songs="${s_no}"><a href="#" class="t_display">${c_no.replaceAll("_", " ")}</a></h5>
             </div>`;
             document.querySelector(".ab_box").innerHTML = document.querySelector(".ab_box").innerHTML + all_box;
             // console.log("click See all button");
