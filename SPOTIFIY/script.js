@@ -218,7 +218,7 @@ document.querySelector(".HOME").addEventListener("click", () => {
 async function getT_S() {
     async function songs() {
         try {
-            let song = await fetch("/Spotifiy_song/T_S/");
+            let song = await fetch("http://spotifyclone.gamer.gd/Spotifiy_song/T_S/");
             if (!song.ok) {
                 console.error('Failed to fetch songs:', song.status, song.statusText);
                 return [];
@@ -252,7 +252,7 @@ async function getT_S() {
 
     async function image() {
         try {
-            let image = await fetch("/Spotify_images/T_S/");
+            let image = await fetch("http://spotifyclone.gamer.gd/Spotify_images/T_S/");
             if (!image.ok) {
                 console.error('Failed to fetch images:', image.status, image.statusText);
                 return [];
@@ -400,7 +400,7 @@ async function getT_S() {
 
 async function getPA() {
     async function PA_url() {
-        let url = await fetch("/Spotify_images/P_A/");
+        let url = await fetch("http://spotifyclone.gamer.gd/Spotify_images/P_A/");
         let url_r = await url.text();
         let div_i = document.createElement("div");
         div_i.innerHTML = url_r;
@@ -417,7 +417,7 @@ async function getPA() {
     }
 
     async function PA2_img() {
-        let url_1 = await fetch("/Spotify_images/P_A/");
+        let url_1 = await fetch("http://spotifyclone.gamer.gd/Spotify_images/P_A/");
         let url_r = await url_1.text();
         let div_1 = document.createElement("div");
         div_1.innerHTML = url_r;
@@ -433,7 +433,7 @@ async function getPA() {
     }
 
     async function PA2_song() {
-        let url_2 = await fetch("/Spotifiy_song/P_A/");
+        let url_2 = await fetch("http://spotifyclone.gamer.gd/Spotifiy_song/P_A/");
         let url_r_2 = await url_2.text();
         let div_2 = document.createElement("div");
         div_2.innerHTML = url_r_2;
@@ -644,7 +644,7 @@ async function getPA() {
 
 async function getPAS() {
     async function PAS_url() {
-        let url = await fetch("/Spotify_images/P_A_S/");
+        let url = await fetch("http://spotifyclone.gamer.gd/Spotify_images/P_A_S/");
         let url_r = await url.text();
         let div_i = document.createElement("div");
         div_i.innerHTML = url_r;
@@ -670,7 +670,7 @@ async function getPAS() {
     }
 
     async function PAS2_img() {
-        let url_1 = await fetch("/Spotify_images/P_A_S/");
+        let url_1 = await fetch("http://spotifyclone.gamer.gd/Spotify_images/P_A_S/");
         let url_r = await url_1.text();
         let div_1 = document.createElement("div");
         div_1.innerHTML = url_r;
@@ -686,7 +686,7 @@ async function getPAS() {
     }
 
     async function PAS2_song() {
-        let url_2 = await fetch("/Spotifiy_song/P_A_S/");
+        let url_2 = await fetch("http://spotifyclone.gamer.gd/Spotifiy_song/P_A_S/");
         let url_r_2 = await url_2.text();
         let div_2 = document.createElement("div");
         div_2.innerHTML = url_r_2;
@@ -886,7 +886,7 @@ async function getPAS() {
 
 async function getPR() {
     async function PR_img() {
-        let url = await fetch("/Spotify_images/P_R/");
+        let url = await fetch("http://spotifyclone.gamer.gd/Spotify_images/P_R/");
         let url_r = await url.text();
         let div_i = document.createElement("div");
         div_i.innerHTML = url_r;
@@ -903,7 +903,7 @@ async function getPR() {
     }
 
     async function PR2_img() {
-        let url_1 = await fetch("/Spotify_images/P_R/PR_songs_img/");
+        let url_1 = await fetch("http://spotifyclone.gamer.gd/Spotify_images/P_R/PR_songs_img/");
         let url_r = await url_1.text();
         let div_1 = document.createElement("div");
         div_1.innerHTML = url_r;
@@ -919,7 +919,7 @@ async function getPR() {
     }
 
     async function PR2_song() {
-        let url_2 = await fetch("/Spotifiy_song/P_R/");
+        let url_2 = await fetch("http://spotifyclone.gamer.gd/Spotifiy_song/P_R/");
         let url_r_2 = await url_2.text();
         let div_2 = document.createElement("div");
         div_2.innerHTML = url_r_2;
@@ -1120,7 +1120,7 @@ async function getPR() {
 
 async function getFC() {
     async function FC_img() {
-        let url = await fetch("/Spotify_images/F_C/");
+        let url = await fetch("http://spotifyclone.gamer.gd/Spotify_images/F_C/");
         let url_r = await url.text();
         let div_i = document.createElement("div");
         div_i.innerHTML = url_r;
@@ -1137,7 +1137,7 @@ async function getFC() {
     }
 
     async function FC2_img() {
-        let url_1 = await fetch("/Spotify_images/F_C/");
+        let url_1 = await fetch("http://spotifyclone.gamer.gd/Spotify_images/F_C/");
         let url_r = await url_1.text();
         let div_1 = document.createElement("div");
         div_1.innerHTML = url_r;
@@ -1153,7 +1153,7 @@ async function getFC() {
     }
 
     async function F_C2_song() {
-        let url_2 = await fetch("/Spotifiy_song/F_C/");
+        let url_2 = await fetch("http://spotifyclone.gamer.gd/Spotifiy_song/F_C/");
         let url_r_2 = await url_2.text();
         let div_2 = document.createElement("div");
         div_2.innerHTML = url_r_2;
@@ -1347,7 +1347,7 @@ async function getFC() {
 
 async function getI_R() {
     async function songs() {
-        let song = await fetch("/Spotifiy_song/I_R/");
+        let song = await fetch("http://spotifyclone.gamer.gd/Spotifiy_song/I_R/");
         let song_r = await song.text();
         let div_s = document.createElement("div");
         div_s.innerHTML = song_r;
@@ -1372,7 +1372,7 @@ async function getI_R() {
     }
 
     async function image() {
-        let image = await fetch("/Spotify_images/I_R/");
+        let image = await fetch("http://spotifyclone.gamer.gd/Spotify_images/I_R/");
         let image_r = await image.text();
         let div_i = document.createElement("div");
         div_i.innerHTML = image_r;
