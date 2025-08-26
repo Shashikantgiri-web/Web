@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Spotify</title>
     <link rel="shortcut icon" href="https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico" type="image/x-icon">
-    <link rel="stylesheet" href="Spotifiy.css">
+    <link rel="stylesheet" href="./style.css">
     <style>
         .visually-hidden {
             position: absolute;
@@ -483,7 +484,7 @@
             </div>
             <div class="search-div">
                 <div class="sea_logo">
-                    <img src="Spotify_images/Search_logo.png" alt="search">
+                    <img src="Spotify_images/Search_logo.jpg" alt="search">
                 </div>
                 <div class="sea_input">
                     <input type="search" name="Serach" placeholder="What do you want to play?"></input>
@@ -541,7 +542,7 @@
     </header>
     <nav>
         <div class="back_buttom">
-            <img src="/Spotify_images/x-button.png" alt="back" class="back">
+            <img src="/Spotify_images/x-button.jpg" alt="back" class="back">
         </div>
         <div class="main_nav">
             <h3>Log in</h3>
@@ -871,7 +872,81 @@
             <p>Your Library</p>
         </div>
     </div>
-    <script src="Spotifiy.Js"></script>
+    <script>
+        // Polyfill for String.prototype.replaceAll for older browsers
+        (function(){
+            if (!String.prototype.replaceAll) {
+                Object.defineProperty(String.prototype, 'replaceAll', {
+                    value: function findAndReplaceAll(search, replacement) {
+                        var target = this;
+                        var pattern = (search instanceof RegExp)
+                            ? new RegExp(search.source, search.flags.includes('g') ? search.flags : search.flags + 'g')
+                            : new RegExp(search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+                        return target.replace(pattern, replacement);
+                    },
+                    configurable: true,
+                    writable: true
+                });
+            }
+        })();
+
+        // Fetch wrapper to keep requests same-origin and HTTPS without touching JS files
+        (function(){
+            var originalFetch = window.fetch;
+            window.fetch = function(input, init){
+                var url = (typeof input === 'string') ? input : input.url;
+                // Rewrite hardcoded domain to current origin
+                url = url.replace(/^https?:\/\/spotifyclone\.gamer\.gd\//, window.location.origin + '/');
+                // Ensure we never downgrade to http
+                if (url.startsWith('http://')) {
+                    url = 'https://' + url.slice('http://'.length);
+                }
+                return originalFetch(url, init).then(function(resp){
+                    try {
+                        var ct = resp.headers.get('content-type') || '';
+                        var isListing = /\/Spotify_images\//.test(url) && /text\/html|directory/i.test(ct);
+                        if (isListing) {
+                            return resp.clone().text().then(function(txt){
+                                // Make .jpg look like .png in listings so existing code picks them up
+                                var patched = txt.replace(/\.jpg/g, '.png');
+                                return new Response(patched, { status: resp.status, statusText: resp.statusText, headers: { 'content-type': 'text/html; charset=UTF-8' } });
+                            });
+                        }
+                    } catch(e) { /* noop */ }
+                    return resp;
+                });
+            };
+        })();
+
+        // Normalize any DOM src/href pointing to the hardcoded domain or http
+        (function(){
+            function normalizeUrl(u){
+                if (!u) return u;
+                var nu = u.replace(/^https?:\/\/spotifyclone\.gamer\.gd\//, window.location.origin + '/');
+                if (nu.startsWith('http://')) nu = 'https://' + nu.slice('http://'.length);
+                return nu;
+            }
+            function fixAttrs(node){
+                if (node && node.getAttribute) {
+                    if (node.hasAttribute('src')) node.setAttribute('src', normalizeUrl(node.getAttribute('src')));
+                    if (node.hasAttribute('href')) node.setAttribute('href', normalizeUrl(node.getAttribute('href')));
+                }
+            }
+            var mo = new MutationObserver(function(muts){
+                muts.forEach(function(m){
+                    if (m.type === 'attributes') fixAttrs(m.target);
+                    Array.from(m.addedNodes || []).forEach(function(n){
+                        if (n.nodeType === 1) {
+                            fixAttrs(n);
+                            n.querySelectorAll && n.querySelectorAll('[src],[href]').forEach(fixAttrs);
+                        }
+                    });
+                });
+            });
+            mo.observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['src','href'] });
+        })();
+    </script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
