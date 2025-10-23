@@ -5,7 +5,7 @@ const header = () => {
   return (
     <div className='w-[99%] h-[10vh] flex flex-row justify-center items-center'>
         <div className='w-[50%] h-[100%] flex justify-center items-center'>
-            <h2 className='text-white font-bold text-[29px] italic'>TO-DO LIST APP</h2>
+            <h2 className='text-white font-bold text-[19px] sm:text-[29px] italic'>TO-DO LIST APP</h2>
         </div>
         <div className='w-[50%] h-[100%] flex flex-row justify-center items-center'>
             <ul className='w-[99%] h-[100%] flex flex-row justify-center items-center'>
